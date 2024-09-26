@@ -1,5 +1,5 @@
 import "./StoreItem.css";
-import React from "react";
+import React, { useState } from "react";
 import { UserContext } from "../Context";
 import { useContext } from "react";
 
@@ -8,7 +8,7 @@ function StoreItem(props) {
   return (
     <div
       className={
-        props.store === nowStore ? "store-item-selected" : "store-item"
+        props.store.id === nowStore.id ? "store-item-selected" : "store-item"
       }
       onClick={() => {
         setNowStore(props.store);

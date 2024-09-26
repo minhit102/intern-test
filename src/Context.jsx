@@ -39,7 +39,7 @@ export function ContextProvider({ children }) {
     fetchAllData();*/
 
     const fetData = async () => {
-      await setStores([
+      setStores([
         {
           id: 1,
           name: "Ding Tea",
@@ -57,7 +57,7 @@ export function ContextProvider({ children }) {
           name: "LeeTee",
         },
       ]);
-      await setStoreProducts([
+      setStoreProducts([
         {
           id: 1,
           shop: 1,
@@ -108,19 +108,69 @@ export function ContextProvider({ children }) {
           shop: 2,
           product: 5,
         },
+        {
+          id: 11,
+          shop: 2,
+          product: 6,
+        },
+        {
+          id: 12,
+          shop: 4,
+          product: 7,
+        },
+        {
+          id: 13,
+          shop: 4,
+          product: 8,
+        },
+        {
+          id: 14,
+          shop: 3,
+          product: 9,
+        },
+        {
+          id: 15,
+          shop: 3,
+          product: 10,
+        },
+        {
+          id: 16,
+          shop: 1,
+          product: 11,
+        },
+        {
+          id: 17,
+          shop: 2,
+          product: 12,
+        },
+        {
+          id: 18,
+          shop: 3,
+          product: 13,
+        },
+        {
+          id: 19,
+          shop: 4,
+          product: 14,
+        },
+        {
+          id: 20,
+          shop: 1,
+          product: 15,
+        },
       ]);
-      await setProducts([
+      setProducts([
         {
           id: 1,
           name: "Royal Milk Tea",
           price: 4.8,
-          toppings: "Milk foam,white pearl",
+          toppings: "Milk foam, white pearl",
         },
         {
           id: 2,
           name: "Green Milk Tea",
           price: 4.6,
-          toppings: "pearl",
+          toppings: "Pearl",
         },
         {
           id: 3,
@@ -138,12 +188,107 @@ export function ContextProvider({ children }) {
           id: 5,
           name: "Mango Milk Tea",
           price: 5.1,
-          toppings: "Aloe, Pearl",
+          toppings: "Aloe, pearl",
+        },
+        {
+          id: 6,
+          name: "Matcha Milk Tea",
+          price: 5.3,
+          toppings: "Red bean, milk foam",
+        },
+        {
+          id: 7,
+          name: "Strawberry Milk Tea",
+          price: 5.0,
+          toppings: "Fruit bits, pearl",
+        },
+        {
+          id: 8,
+          name: "Chocolate Milk Tea",
+          price: 5.5,
+          toppings: "Chocolate syrup, whipped cream",
+        },
+        {
+          id: 9,
+          name: "Taro Milk Tea",
+          price: 4.9,
+          toppings: "Taro bits, pearl",
+        },
+        {
+          id: 10,
+          name: "Lychee Milk Tea",
+          price: 5.2,
+          toppings: "Lychee jelly, pearl",
+        },
+        {
+          id: 11,
+          name: "Peach Milk Tea",
+          price: 5.4,
+          toppings: "Peach slices, pearl",
+        },
+        {
+          id: 12,
+          name: "Caramel Milk Tea",
+          price: 5.6,
+          toppings: "Caramel drizzle, whipped cream",
+        },
+        {
+          id: 13,
+          name: "Honeydew Milk Tea",
+          price: 4.7,
+          toppings: "Honeydew bits, pearl",
+        },
+        {
+          id: 14,
+          name: "Coconut Milk Tea",
+          price: 5.0,
+          toppings: "Coconut shavings, pearl",
+        },
+        {
+          id: 15,
+          name: "Passion Fruit Milk Tea",
+          price: 5.3,
+          toppings: "Passion fruit pulp, pearl",
+        },
+        {
+          id: 16,
+          name: "Coffee Milk Tea",
+          price: 5.4,
+          toppings: "Coffee jelly, milk foam",
+        },
+        {
+          id: 17,
+          name: "Almond Milk Tea",
+          price: 5.1,
+          toppings: "Almond bits, pearl",
+        },
+        {
+          id: 18,
+          name: "Lychee Rose Milk Tea",
+          price: 5.5,
+          toppings: "Lychee, rose petals",
+        },
+        {
+          id: 19,
+          name: "Lavender Milk Tea",
+          price: 5.0,
+          toppings: "Lavender syrup, whipped cream",
+        },
+        {
+          id: 20,
+          name: "Nutella Milk Tea",
+          price: 5.8,
+          toppings: "Nutella drizzle, whipped cream",
         },
       ]);
+      setNowStore({
+        id: 1,
+        name: "Ding Tea",
+      });
     };
     fetData();
   }, []);
+
   return (
     <UserContext.Provider
       value={{ products, stores, storeProducts, error, nowStore, setNowStore }}

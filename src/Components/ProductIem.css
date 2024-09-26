@@ -1,10 +1,11 @@
 .product-item{
-    height: 100% ;
+    height: 300px ;
     width:100% ;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: white;
     color: #15317E;
+    position: relative;
 }
 .mt-product{
     margin: 20px 10px 0px 20px;
@@ -27,8 +28,39 @@
     margin: 15px 20px 0px 20px;
 }
 .price-product{
-    margin-top: 50px;
-    margin-right: 40px;
+    position: absolute; /* Đặt phần tử ở vị trí tuyệt đối */
+    bottom: 30px; /* Căn chỉnh ở đáy */
+    right: 30px;
     text-align: right;
     font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .mt-product{
+        margin: 15px 5px 0px 8px;
+    }
+    .name-product{
+        margin: 10px 5px 0px 10px;
+    }
+    .title-topping{
+        margin: 10px 5px 0px 10px;
+    }
+    .container-toppings{
+        margin: 10px 20px 0px 10px;
+    }
+    .hr-product{
+        margin: 10px 15px 0px 10px;
+        background-color: #15317E; 
+        border: none; 
+        height: 2px; 
+    }
+    .product-item{
+        height: 200px;
+    }
+    .price-product{
+        bottom: 18px; /* Căn chỉnh ở đáy */
+        right: 18px;
+    }
+
+    
 }

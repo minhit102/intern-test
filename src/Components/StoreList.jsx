@@ -5,6 +5,7 @@ import "./StoreList.css";
 
 function StoreList() {
   const { stores } = useContext(UserContext);
+  console.log(stores);
 
   return (
     <div className="container-list-store">

@@ -4,12 +4,51 @@ import "./ProductList.css";
 import ProductItem from "../Components/ProductItem";
 
 function ProductList() {
-  const { products, nowStore } = useContext(UserContext);
+  const { products, nowStore, storeProducts } = useContext(UserContext);
   const [sortProduct, setSortProduct] = useState("NameAsc");
+  const [productsStoreNow, setProductStoreNow] = useState([]);
+  const [productStore, setProductStore] = useState([]);
 
   const handleSort = (e) => {
     setSortProduct(e.target.value);
   };
+
+  const shopProduct = storeProducts.filter(
+    (shopProduct) => shopProduct?.shop === nowStore?.id
+  );
+
+  useEffect(() => {
+    const getProduct = () => {
+      const productInStore = [];
+      shopProduct.map((shopProduct) => {
+        products.map((product) => {
+          if (shopProduct?.id === product?.id) {
+            productInStore.push(product);
+          }
+        });
+      });
+      return productInStore;
+    };
+    setProductStore(getProduct());
+  }, [nowStore, products, storeProducts]);
+
+  useEffect(() => {
+    const sortedProducts = [...productStore];
+    if (sortProduct === "PriceAsc") {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (sortProduct === "PriceDsc") {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    } else {
+      sortedProducts.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return sortProduct === "NameAsc"
+          ? nameA.localeCompare(nameB)
+          : nameB.localeCompare(nameA);
+      });
+    }
+    setProductStoreNow(sortedProducts);
+  }, [sortProduct, productStore]);
 
   return (
     <div className="container-list-product">
@@ -36,11 +75,9 @@ function ProductList() {
       </div>
       <div className="list-product">
         <ul className="ul-list-product">
-          {products.map((product) => (
+          {productsStoreNow.map((product, index) => (
             <li key={product.id} className="li-product">
-              {" "}
-              {/* Thêm key để tối ưu hóa */}
-              <ProductItem product={product} mt={product.id + 1} />
+              <ProductItem product={product} mt={index + 1} />
             </li>
           ))}
         </ul>

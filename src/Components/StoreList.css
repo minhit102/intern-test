@@ -1,7 +1,6 @@
 .container-list-store{
     background-color: #14275cf1;
-    width: 25%;
-    overflow-y: auto;
+    width: 25%;  
     color: #C0C0C0;
 }
 .container-list-store h1 {
@@ -16,4 +15,26 @@
 .item-detail :hover{
     background-color: cornflowerblue;
     color:white;
+}
+
+@media (max-width: 768px) {
+    .container-list-store h1{
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .item-detail{
+        list-style-type: none;
+    }
+}
+@media (max-width: 360px) {
+    .container-list-store{
+        width: 100%;
+    }
+    .container-list-item{
+    display : grid;
+    grid-template-columns:  auto  auto;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+
+    }
 }

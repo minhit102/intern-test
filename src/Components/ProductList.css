@@ -12,9 +12,11 @@
 }
 .filter-sort{
     display : flex;
-    margin: 0px 80px 0px 100px;
-    font-size: 20px;
-
+    margin: 0px 8% 0px 8%;
+}
+.filter-sort label{
+    font-weight: bold;
+    color: #15317E; 
 }
 .button-filter{
     background-color:#15317E ;
@@ -24,23 +26,24 @@
     text-align: center;
     border: none;
     border-radius: 5px;
-    font-size: 24px;
+    font-size: 20px;
 }
 .container-sort{
     margin-left: auto;
     font-size: 20px;
+    color: #15317E;
 }
 .selectSort{
     font-size: 20px;
     height: 40px;
     width: 150px;
-    margin-left: 15px;
-    background-color: rgba(230, 229, 229, 0.938);
+    
+    background-color: rgba(230, 229, 229, 0.833);
     border-radius:5px;
 }
 .list-product{
     display : flex;
-    margin: 30px 80px 100px 100px;
+    margin: 5%  8% 0px 8%;
     font-size: 20px;
     
 }
@@ -50,7 +53,7 @@
     padding: 0; /* Xóa padding mặc định */
     margin: 0; /* Xóa margin mặc định */
     display: grid;
-    gap: 80px;
+    gap: 7%;
     grid-template-columns: auto auto auto;
     grid-template-columns: repeat(3, 1fr);
     align-items: stretch;
@@ -58,6 +61,50 @@
 .li-product{
     width: 100%;
     background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+@media (max-width: 768px) {
+    .container-store-product{
+        font-size: 24px;
+        padding: 24px;
+    }
+    .button-filter{
+    height: 33px;
+    width: 100px;  
+    font-size: 16px;  
+    }
+    .selectSort{
+        height: 33px;
+        width: 100px; 
+        font-size: 14px;
+    }
+    .filter-sort label{
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .ul-list-product{
+        font-size: 14px;
+        gap: 4%;
+    }
+    .ul-list-product{
+        grid-template-columns: auto auto;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 360px) {
+    .container-list-product{
+        width: 100%;
+        margin: 0px;
+    }
+    .ul-list-product{
+        grid-template-columns: auto auto;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: stretch;
+    }
+    
+}
 
