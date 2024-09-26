@@ -1,0 +1,19 @@
+.container-list-store{
+    background-color: #14275cf1;
+    width: 25%;
+    overflow-y: auto;
+    color: #C0C0C0;
+}
+.container-list-store h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color:white;
+
+}
+.item-detail{
+    list-style-type: none;
+}
+.item-detail :hover{
+    background-color: cornflowerblue;
+    color:white;
+}

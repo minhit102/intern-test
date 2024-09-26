@@ -1,0 +1,15 @@
+.store-item{
+    padding: 20px 0 20px 100px;
+    font-size: 30px;
+}
+.store-item:hover {
+    color: aliceblue;
+    background-color: rgb(122, 144, 211);
+}
+
+.store-item-selected{
+    padding: 20px 0 20px 100px;
+    font-size: 30px;
+    color: aliceblue;
+    background-color: rgb(69, 107, 222);
+}

@@ -1,0 +1,63 @@
+.container-list-product{
+    width: 75%; 
+    background-color: #f2f0f0b1; 
+    overflow-y: auto;
+}
+.container-store-product{
+    color: #15317E;
+    text-align: center;
+    font-size: 40px;
+    padding: 40px;
+    font-weight: bold;
+}
+.filter-sort{
+    display : flex;
+    margin: 0px 80px 0px 100px;
+    font-size: 20px;
+
+}
+.button-filter{
+    background-color:#15317E ;
+    color: white;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+}
+.container-sort{
+    margin-left: auto;
+    font-size: 20px;
+}
+.selectSort{
+    font-size: 20px;
+    height: 40px;
+    width: 150px;
+    margin-left: 15px;
+    background-color: rgba(230, 229, 229, 0.938);
+    border-radius:5px;
+}
+.list-product{
+    display : flex;
+    margin: 30px 80px 100px 100px;
+    font-size: 20px;
+    
+}
+.ul-list-product{
+    width: 100%;
+    list-style-type: none; /* Loại bỏ ký hiệu */
+    padding: 0; /* Xóa padding mặc định */
+    margin: 0; /* Xóa margin mặc định */
+    display: grid;
+    gap: 80px;
+    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+}
+.li-product{
+    width: 100%;
+    background-color: white;
+}
+
+
