@@ -19,49 +19,57 @@ function ProductList() {
     "Chocolate syrup": false,
   });
 
+  // lấy sản phẩm từ cửa hàng
+  const getProductsFromStore = (shopProducts, allProducts) => {
+    return shopProducts.reduce((acc, shopProduct) => {
+      const matchedProducts = allProducts.filter(
+        (product) => shopProduct?.id === product?.id
+      );
+      return acc.concat(matchedProducts);
+    }, []);
+  };
+
+  //sắp xếp sản phẩm
+  const sortProducts = (products, sortBy) => {
+    const sorted = [...products];
+    switch (sortBy) {
+      case "PriceAsc":
+        return sorted.sort((a, b) => a.price - b.price);
+      case "PriceDsc":
+        return sorted.sort((a, b) => b.price - a.price);
+      case "NameAsc":
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      case "NameDsc":
+        return sorted.sort((a, b) => b.name.localeCompare(a.name));
+      default:
+        return sorted;
+    }
+  };
+
+  // Cập nhật danh sách sản phẩm trong cửa hàng tương ứng
+  useEffect(() => {
+    const shopProducts = storeProducts.filter(
+      (shopProduct) => shopProduct?.shop === nowStore?.id
+    );
+    const productInStore = getProductsFromStore(shopProducts, products);
+    setProductStore(productInStore);
+  }, [nowStore, products, storeProducts, showFilter, checked]);
+
+  // Sắp xếp  sản phẩm hiện tại
+  useEffect(() => {
+    const sortedProducts = sortProducts(productStore, sortProduct);
+    setProductStoreNow(sortedProducts);
+  }, [sortProduct, productStore]);
+
+  // Hàm xử lý sự kiện lọc sản phẩm
   const handClickFilter = () => {
     setShowFilter(!showFilter);
   };
 
+  // Hàm xử lý sự kiện sắp xếp
   const handleSort = (e) => {
     setSortProduct(e.target.value);
   };
-  const shopProduct = storeProducts.filter(
-    (shopProduct) => shopProduct?.shop === nowStore?.id
-  );
-  // Cap nhat tat ca san pham trong Store tuong ung
-  useEffect(() => {
-    const getProduct = () => {
-      const productInStore = [];
-      shopProduct.map((shopProduct) => {
-        products.map((product) => {
-          if (shopProduct?.id === product?.id) {
-            productInStore.push(product);
-          }
-        });
-      });
-      return productInStore;
-    };
-    setProductStore(getProduct());
-  }, [nowStore, products, storeProducts, showFilter, checked]);
-
-  useEffect(() => {
-    const sortedProducts = [...productStore];
-    if (sortProduct === "PriceAsc") {
-      sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (sortProduct === "PriceDsc") {
-      sortedProducts.sort((a, b) => b.price - a.price);
-    } else {
-      sortedProducts.sort((a, b) => {
-        const nameA = a.name.toLowerCase();
-        const nameB = b.name.toLowerCase();
-        return sortProduct === "NameAsc"
-          ? nameA.localeCompare(nameB)
-          : nameB.localeCompare(nameA);
-      });
-    }
-    setProductStoreNow(sortedProducts);
-  }, [sortProduct, productStore, checked, showFilter]);
 
   return (
     <div className="container-list-product">
