@@ -8,7 +8,7 @@ function StoreItem(props) {
   return (
     <div
       className={
-        props.store.id === nowStore.id ? "store-item-selected" : "store-item"
+        props.store.id === nowStore?.id ? "store-item-selected" : "store-item"
       }
       onClick={() => {
         setNowStore(props.store);

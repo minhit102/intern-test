@@ -12,7 +12,7 @@ function StoreList() {
       <h1>Milk Tea Store</h1>
       <div className="container-list-item">
         {stores.map((store) => (
-          <StoreItem key={store.id} store={store} />
+          <StoreItem key={store?.id} store={store} />
         ))}
       </div>
     </div>

@@ -2,21 +2,34 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../Context";
 import "./ProductList.css";
 import ProductItem from "../Components/ProductItem";
+import Toppings from "./Toppings";
 
 function ProductList() {
   const { products, nowStore, storeProducts } = useContext(UserContext);
   const [sortProduct, setSortProduct] = useState("NameAsc");
   const [productsStoreNow, setProductStoreNow] = useState([]);
   const [productStore, setProductStore] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
+  const [checked, setChecked] = useState({
+    Pearl: false,
+    "Milk foam": false,
+    Aloe: false,
+    "Red bean": false,
+    "Whipped cream": false,
+    "Chocolate syrup": false,
+  });
+
+  const handClickFilter = () => {
+    setShowFilter(!showFilter);
+  };
 
   const handleSort = (e) => {
     setSortProduct(e.target.value);
   };
-
   const shopProduct = storeProducts.filter(
     (shopProduct) => shopProduct?.shop === nowStore?.id
   );
-
+  // Cap nhat tat ca san pham trong Store tuong ung
   useEffect(() => {
     const getProduct = () => {
       const productInStore = [];
@@ -30,7 +43,7 @@ function ProductList() {
       return productInStore;
     };
     setProductStore(getProduct());
-  }, [nowStore, products, storeProducts]);
+  }, [nowStore, products, storeProducts, showFilter, checked]);
 
   useEffect(() => {
     const sortedProducts = [...productStore];
@@ -48,13 +61,20 @@ function ProductList() {
       });
     }
     setProductStoreNow(sortedProducts);
-  }, [sortProduct, productStore]);
+  }, [sortProduct, productStore, checked, showFilter]);
 
   return (
     <div className="container-list-product">
       <div className="container-store-product">{nowStore?.name} Menu </div>
       <div className="filter-sort">
-        <button className="button-filter">Filter</button>
+        <button
+          className="button-filter"
+          onClick={() => {
+            handClickFilter();
+          }}
+        >
+          Filter
+        </button>
         <div className="container-sort">
           <label>Sort By </label>
           <select id="selectSort" className="selectSort" onChange={handleSort}>
@@ -73,6 +93,7 @@ function ProductList() {
           </select>
         </div>
       </div>
+      {showFilter && <Toppings checked={checked} setChecked={setChecked} />}
       <div className="list-product">
         <ul className="ul-list-product">
           {productsStoreNow.map((product, index) => (

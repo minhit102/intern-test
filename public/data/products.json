@@ -1,0 +1,124 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Royal Milk Tea",
+      "price": 4.8,
+      "toppings": ["Milk foam", "Pearl"]
+    },
+    {
+      "id": 2,
+      "name": "Green Milk Tea",
+      "price": 4.6,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 3,
+      "name": "Oolong Milk Tea",
+      "price": 5.1,
+      "toppings": ["Pearl", "Milk foam"]
+    },
+    {
+      "id": 4,
+      "name": "Blueberry Milk Tea",
+      "price": 5.1,
+      "toppings": ["Pearl", "Milk foam"]
+    },
+    {
+      "id": 5,
+      "name": "Mango Milk Tea",
+      "price": 5.1,
+      "toppings": ["Aloe", "Pearl"]
+    },
+    {
+      "id": 6,
+      "name": "Matcha Milk Tea",
+      "price": 5.3,
+      "toppings": ["Red bean", "Milk foam"]
+    },
+    {
+      "id": 7,
+      "name": "Strawberry Milk Tea",
+      "price": 5.0,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 8,
+      "name": "Chocolate Milk Tea",
+      "price": 5.5,
+      "toppings": ["Chocolate syrup", "Whipped cream"]
+    },
+    {
+      "id": 9,
+      "name": "Taro Milk Tea",
+      "price": 4.9,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 10,
+      "name": "Lychee Milk Tea",
+      "price": 5.2,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 11,
+      "name": "Peach Milk Tea",
+      "price": 5.4,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 12,
+      "name": "Caramel Milk Tea",
+      "price": 5.6,
+      "toppings": ["Whipped cream"]
+    },
+    {
+      "id": 13,
+      "name": "Honeydew Milk Tea",
+      "price": 4.7,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 14,
+      "name": "Coconut Milk Tea",
+      "price": 5.0,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 15,
+      "name": "Passion Fruit Milk Tea",
+      "price": 5.3,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 16,
+      "name": "Coffee Milk Tea",
+      "price": 5.4,
+      "toppings": ["Milk foam"]
+    },
+    {
+      "id": 17,
+      "name": "Almond Milk Tea",
+      "price": 5.1,
+      "toppings": ["Pearl"]
+    },
+    {
+      "id": 18,
+      "name": "Lychee Rose Milk Tea",
+      "price": 5.5,
+      "toppings": []
+    },
+    {
+      "id": 19,
+      "name": "Lavender Milk Tea",
+      "price": 5.0,
+      "toppings": ["Whipped cream"]
+    },
+    {
+      "id": 20,
+      "name": "Nutella Milk Tea",
+      "price": 5.8,
+      "toppings": ["Whipped cream"]
+    }
+  ]
+}
