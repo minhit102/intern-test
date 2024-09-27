@@ -29,7 +29,10 @@ function Topping(props) {
               type="checkbox"
               id={topping}
               checked={checked[topping]}
-              onChange={handleChange}
+              onChange={(event) => {
+                handleChange(event); // Gọi hàm handleChange
+                //props.handleCheckboxChange([topping]); // Gọi hàm handleCheckboxChange từ props
+              }}
               name={topping}
             />
             <label htmlFor={topping}>{topping}</label>

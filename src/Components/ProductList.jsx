@@ -19,7 +19,6 @@ function ProductList() {
     "Chocolate syrup": false,
   });
 
-  // lấy sản phẩm từ cửa hàng
   const getProductsFromStore = (shopProducts, allProducts) => {
     return shopProducts.reduce((acc, shopProduct) => {
       const matchedProducts = allProducts.filter(
@@ -29,7 +28,6 @@ function ProductList() {
     }, []);
   };
 
-  //sắp xếp sản phẩm
   const sortProducts = (products, sortBy) => {
     const sorted = [...products];
     switch (sortBy) {
@@ -46,62 +44,67 @@ function ProductList() {
     }
   };
 
-  // Cập nhật danh sách sản phẩm trong cửa hàng tương ứng
   useEffect(() => {
     const shopProducts = storeProducts.filter(
       (shopProduct) => shopProduct?.shop === nowStore?.id
     );
     const productInStore = getProductsFromStore(shopProducts, products);
     setProductStore(productInStore);
-  }, [nowStore, products, storeProducts, showFilter, checked]);
+  }, [nowStore, products, storeProducts]);
 
-  // Sắp xếp  sản phẩm hiện tại
   useEffect(() => {
-    const sortedProducts = sortProducts(productStore, sortProduct);
-    setProductStoreNow(sortedProducts);
-  }, [sortProduct, productStore]);
+    let filteredProducts = productStore;
 
-  // Hàm xử lý sự kiện lọc sản phẩm
+    if (showFilter) {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.toppings.some((topping) => checked[topping])
+      );
+    }
+
+    const sortedProducts = sortProducts(filteredProducts, sortProduct);
+
+    setProductStoreNow(sortedProducts);
+  }, [sortProduct, productStore, checked, showFilter]);
+
   const handClickFilter = () => {
     setShowFilter(!showFilter);
   };
 
-  // Hàm xử lý sự kiện sắp xếp
   const handleSort = (e) => {
     setSortProduct(e.target.value);
+  };
+
+  const handleCheckboxChange = (topping) => {
+    setChecked((prevChecked) => ({
+      ...prevChecked,
+      [topping]: !prevChecked[topping],
+    }));
   };
 
   return (
     <div className="container-list-product">
       <div className="container-store-product">{nowStore?.name} Menu </div>
       <div className="filter-sort">
-        <button
-          className="button-filter"
-          onClick={() => {
-            handClickFilter();
-          }}
-        >
+        <button className="button-filter" onClick={handClickFilter}>
           Filter
         </button>
         <div className="container-sort">
           <label>Sort By </label>
           <select id="selectSort" className="selectSort" onChange={handleSort}>
-            <option key="1" value="NameAsc">
-              Sort A-Z
-            </option>
-            <option key="2" value="NameDsc">
-              Sort Z-A
-            </option>
-            <option key="3" value="PriceAsc">
-              Price: Low to High
-            </option>
-            <option key="4" value="PriceDsc">
-              Price: High to Low
-            </option>
+            <option value="NameAsc">Sort A-Z</option>
+            <option value="NameDsc">Sort Z-A</option>
+            <option value="PriceAsc">Price: Low to High</option>
+            <option value="PriceDsc">Price: High to Low</option>
           </select>
         </div>
       </div>
-      {showFilter && <Toppings checked={checked} setChecked={setChecked} />}
+      {showFilter && (
+        <Toppings
+          checked={checked}
+          setChecked={setChecked}
+          handleCheckboxChange={handleCheckboxChange}
+        />
+      )}
       <div className="list-product">
         <ul className="ul-list-product">
           {productsStoreNow.map((product, index) => (
